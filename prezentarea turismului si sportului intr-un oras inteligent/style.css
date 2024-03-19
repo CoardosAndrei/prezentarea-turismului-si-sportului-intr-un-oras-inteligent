@@ -1,0 +1,108 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.tab {
+    background-color: #222;
+    padding: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.tab button {
+    background-color: #555;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin: 0;
+    cursor: pointer;
+    float: left;
+    transition: 0.3s;
+}
+
+.tab button:hover {
+    background-color: #888;
+}
+
+.contact-btn {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: #555;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.contact-btn:hover {
+    background-color: #888;
+}
+
+#autentificareBtn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #555;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#autentificareBtn:hover {
+    background-color: #888;
+}
+
+h1 {
+    color: #333;
+}
+
+p {
+    color: #555;
+}
+
+#stiriSection {
+    text-align: center;
+    margin: 50px auto;
+    max-width: 800px;
+}
+
+#navigareStiri {
+    margin-bottom: 10px;
+}
+
+#dreptunghiStire {
+    background-color: #ccc;
+    padding: 20px;
+    border: 1px solid #999;
+    border-radius: 5px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+
+#navigareStiri button {
+    background-color: #555;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+#navigareStiri button:hover {
+    background-color: #777;
+}

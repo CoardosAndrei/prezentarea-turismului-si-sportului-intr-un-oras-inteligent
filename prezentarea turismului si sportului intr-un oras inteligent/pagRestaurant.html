@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrare Restaurant</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrare Restaurant</title>
+    <style>
+        body {
+            background-color: #111;
+            color: #fff;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .tab {
+            background-color: #333;
+            overflow: hidden;
+        }
+
+        .tab button {
+            background-color: #555;
+            color: white;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 10px 15px;
+            margin: 0;
+            font-size: 16px;
+        }
+
+        .tab button:hover {
+            background-color: #777;
+        }
+
+        h1, p {
+            color: #fff;
+        }
+        
+        #popup {
+        background: linear-gradient(to bottom, #444 0%, #333 100%);
+        color: #fff;
+        padding: 20px;
+        border: 1px solid #555;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: none;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        border-radius: 5px;
+        }
+
+        #popup label {
+            color: #898989;
+        }
+
+        #popup input {
+            background-color: #ffffff;
+            color: #555;
+            border: 1px solid #555;
+            padding: 8px;
+            margin: 5px 0;
+        }
+
+        #popup input[type="submit"] {
+            background-color: #777;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        #popup input[type="submit"]:hover {
+            background-color: #999;
+        }
+    </style>
+</head>
+<body>
+    <!-- Adaugă un tab cu butoane de navigare -->
+    <div class="tab">
+        <button onclick="doNothing()">Rezervari</button>
+        <button onclick="doNothing()">Orar</button>
+        <button onclick="doNothing()">Modificare pagina</button>
+        <button id="logoutBtn" onclick="logout()" style="position: fixed; right: 0px;">Log Out</button>
+        <!-- Alte butoane după nevoie -->
+    </div>
+
+    <h1>Bine ai venit la Pagina administrarii turistice</h1>
+
+    <script>
+        function deschidePopup() {
+            var popup = document.getElementById("popup");
+            popup.style.display = "block";
+        }
+
+        function logout() {
+        window.location.href = 'pagPrinc';
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sport</title>
+    <style>
+        body {
+            background-color: #111;
+            color: #fff;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .tab {
+            background-color: #333;
+            overflow: hidden;
+        }
+
+        .tab button {
+            background-color: #555;
+            color: white;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 10px 15px;
+            margin: 0;
+            font-size: 16px;
+        }
+
+        .tab button:hover {
+            background-color: #777;
+        }
+
+        h1, p {
+            color: #fff;
+        }
+
+        #autentificareBtn, .contact-btn {
+            background-color: #555;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        #autentificareBtn:hover, .contact-btn:hover {
+            background-color: #777;
+        }
+
+        #popup {
+        background: linear-gradient(to bottom, #444 0%, #333 100%);
+        color: #fff;
+        padding: 20px;
+        border: 1px solid #555;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: none;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        border-radius: 5px;
+        }
+
+        #popup label {
+            color: #898989;
+        }
+
+        #popup input {
+            background-color: #ffffff;
+            color: #555;
+            border: 1px solid #555;
+            padding: 8px;
+            margin: 5px 0;
+        }
+
+        #popup input[type="submit"] {
+            background-color: #777;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        #popup input[type="submit"]:hover {
+            background-color: #999;
+        }
+        .dreptunghi {
+            width: 300px;
+            height: 400px;
+            background-color: #444;
+            color: #fff;
+            text-align: center;
+            line-height: 100px;
+            margin: 10px;
+            border-radius: 5px;
+        }
+
+        /* Poziționare dreptunghiuri */
+        #dreptunghiStanga {
+            position: fixed;
+            top: 50%;
+            left: 10px;
+            transform: translate(0, -50%);
+        }
+
+        #dreptunghiMijloc {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #dreptunghiDreapta {
+            position: fixed;
+            top: 50%;
+            right: 10px;
+            transform: translate(0, -50%);
+        }
+    </style>
+</head>
+<body>
+    <div class="tab">
+        <button onclick="navigateTo('pagPrinc')">Home</button>
+        <button onclick="navigateTo('pagSport')">Sport</button>
+        <button onclick="navigateTo('pagTurism')">Turism</button>
+        <button onclick="navigateTo('pagContact')" class="contact-btn" style="position: fixed; bottom: 10px; right: 10px;">Contact</button>
+        <button id="autentificareBtn" onclick="deschidePopup()" style="position: fixed; right: 0px;">Autentificare</button>
+    </div>
+
+    <div class="dreptunghi" id="dreptunghiStanga">Aici vor aparea obiectivele turistice</div>
+    <div class="dreptunghi" id="dreptunghiMijloc">Nu avem niciun eveniment cultural activ in orasul nostru</div>
+    <div class="dreptunghi" id="dreptunghiDreapta">Deocamdata nu avem personal de ghid turistic valabil</div>
+
+
+    <h1>Descoperă orasul nostru</h1>
+    <p>Aici te poti interesa de atractiile noastre turistice.</p>
+
+    <!-- Butonul care deschide popup-ul -->
+
+    <!-- Div-ul pentru popup -->
+    <div id="popup" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #fff; padding: 20px; border: 1px solid #ccc;">
+        <!-- Formularul de autentificare -->
+        <form id="formularAutentificare" action="/login" method="post">
+            <label for="nume_utilizator">Nume utilizator:</label>
+            <input type="text" id="nume_utilizator" name="nume_utilizator" required><br>
+            
+            <label for="parola">Parola:</label>
+            <input type="password" id="parola" name="parola" required><br>
+            
+            <input type="submit" value="Autentificare">
+        </form>
+    </div>
+
+    <script>
+
+        function deschidePopup() {
+            var popup = document.getElementById("popup");
+            popup.style.display = "block";
+        }
+
+        function navigateTo(page) {
+            if (page === 'pagPrinc') {
+                window.location.href = 'pagPrinc';
+            } else {
+                window.location.href = page;
+            }
+        }
+
+        function deschidePopup() {
+            var popup = document.getElementById("popup");
+            popup.style.display = "block";
+        }
+    </script>
+</body>
+</html>

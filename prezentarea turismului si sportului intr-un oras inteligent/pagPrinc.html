@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina Principală</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina Principală</title>
+    <style>
+        body {
+            background-color: #111;
+            color: #fff;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+        }
+
+        .tab {
+            background-color: #333;
+            overflow: hidden;
+        }
+
+        .tab button {
+            background-color: #555;
+            color: white;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 10px 15px;
+            margin: 0;
+            font-size: 16px;
+        }
+
+        .tab button:hover {
+            background-color: #777;
+        }
+
+        h1, p {
+            color: #fff;
+        }
+
+        #autentificareBtn, .contact-btn {
+            background-color: #555;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        #autentificareBtn:hover, .contact-btn:hover {
+            background-color: #777;
+        }
+
+        #popup {
+        background: linear-gradient(to bottom, #444 0%, #333 100%);
+        color: #fff;
+        padding: 20px;
+        border: 1px solid #555;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: none;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        border-radius: 5px;
+        }
+
+        #popup label {
+            color: #898989;
+        }
+
+        #popup input {
+            background-color: #ffffff;
+            color: #555;
+            border: 1px solid #555;
+            padding: 8px;
+            margin: 5px 0;
+        }
+
+        #popup input[type="submit"] {
+            background-color: #777;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        #popup input[type="submit"]:hover {
+            background-color: #999;
+        }
+        #stiriSection {
+            /* Ajustat pentru a centra și mări știrile */
+            margin: 50px auto;
+            max-width: 800px; /* Ajustat pentru a limita lățimea știrilor */
+        }
+
+        #listaStiri {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #listaStiri li {
+            margin: 10px 0;
+            font-size: 18px; /* Ajustat mărimea textului știrilor */
+        }
+        #dreptunghiStire {
+            background: #707070;
+            padding: 20px;
+            border-radius: 5px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        #navigareStiri {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            position: relative; /* Adaugat pentru a permite pozitionarea absoluta a sagetilor */
+        }
+
+        #navigareStiri {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        #navigareStiri button {
+            background-color: #555;
+            color: white;
+            border: none;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #navigareStiri button:first-child {
+            margin-right: auto; /* Mijlocul muchiei drepte, împingând spre dreapta cât mai mult */
+        }
+
+        #navigareStiri button:last-child {
+            margin-left: auto; /* Mijlocul muchiei stângi, împingând spre stânga cât mai mult */
+        }
+
+        #navigareStiri button:hover {
+            background-color: #777;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <!-- Adaugă un tab cu butoane de navigare -->
+    <div class="tab">
+        <button onclick="navigateTo('pagPrinc')">Home</button>
+        <button onclick="navigateTo('pagSport')">Sport</button>
+        <button onclick="navigateTo('pagTurism')">Turism</button>
+        <button onclick="navigateTo('pagContact')" class="contact-btn" style="position: fixed; bottom: 10px; right: 10px;">Contact</button>
+        <button id="autentificareBtn" onclick="deschidePopup()" style="position: fixed; right: 0px;">Autentificare</button>
+    </div>
+
+    <h1>Bine ai venit la Pagina Principală a orasului nostru!</h1>
+    
+   
+    <div id="stiriSection">
+        <div id="navigareStiri">
+            <button onclick="afiseazaStireAnterioara()">◄</button>
+            <button onclick="afiseazaStireUrmatoare()">►</button>
+        </div>
+        <div id="dreptunghiStire">
+            <h2 id="titluStire">Titlul știrii</h2>
+            <p id="continutStire">Conținutul știrii va apărea aici.</p>
+        </div>
+        
+    </div>
+
+    <!-- Div-ul pentru popup -->
+    <div id="popup" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #fff; padding: 20px; border: 1px solid #ccc;">
+        <!-- Formularul de autentificare -->
+        <button onclick="inchidePopup()" style="position: absolute; top: 0px; right: 0px;">X</button>
+        <form id="formularAutentificare" action="/login" method="post" onsubmit="submitForm(event)">
+            <label for="nume_utilizator">Nume utilizator:</label>
+            <input type="text" id="nume_utilizator" name="nume_utilizator" required><br>
+    
+            <label for="parola">Parola:</label>
+            <input type="password" id="parola" name="parola" required><br>
+    
+            <input type="submit" value="Autentificare">
+        </form>
+    </div>
+
+    <script>
+        var stiri = [
+            { titlu: "Titlu știre 1", continut: "Conținutul știrii 1." },
+            { titlu: "Titlu știre 2", continut: "Conținutul știrii 2." },
+            { titlu: "Titlu știre 3", continut: "Conținutul știrii 3." },
+            // Adaugă mai multe știri după același format
+        ];
+        var indexStireCurenta = 0;
+
+        function afiseazaStire(index) {
+            var titluStire = document.getElementById("titluStire");
+            var continutStire = document.getElementById("continutStire");
+
+            if (index >= 0 && index < stiri.length) {
+                titluStire.innerText = stiri[index].titlu;
+                continutStire.innerText = stiri[index].continut;
+                indexStireCurenta = index;
+            }
+        }
+
+        function afiseazaStireAnterioara() {
+            afiseazaStire(indexStireCurenta - 1);
+        }
+
+        function afiseazaStireUrmatoare() {
+            afiseazaStire(indexStireCurenta + 1);
+        }
+
+        // Afiseaza prima stire initial
+        afiseazaStire(0);
+
+        function deschidePopup() {
+            var popup = document.getElementById("popup");
+            popup.style.display = "block";
+        }
+
+        function navigateTo(page) {
+            if (page === 'home') {
+                window.location.href = 'pagPrinc'; // sau calea către pagina principală
+            } else {
+                window.location.href = page ; // pagSport.html, pagTurism.html, pagContact.html, etc.
+            }
+        }
+
+        function adaugaStire(titlu) {
+            var listaStiri = document.getElementById("listaStiri");
+            var li = document.createElement("li");
+            li.appendChild(document.createTextNode(titlu));
+            listaStiri.appendChild(li);
+        }
+
+        async function hashPassword(password) {
+        const encoder = new TextEncoder();
+        const data = encoder.encode(password);
+
+        const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+
+        // Convertim buffer-ul de hash într-un șir hexazecimal
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        const hashedPassword = hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
+
+        return hashedPassword;
+    }
+
+    async function submitForm(event) {
+        event.preventDefault();  // Opriți comportamentul implicit de submit al formularului
+
+        // Preiați valorile introduse în câmpurile de nume utilizator și parolă
+        const numeUtilizator = document.getElementById("nume_utilizator").value;
+        const parola = document.getElementById("parola").value;
+
+        // Hash-uiți parola
+        const hashedPassword = await hashPassword(parola);
+
+        // Setăm valoarea hash-uită în câmpul de parolă
+        document.getElementById("parola").value = hashedPassword;
+
+        // Puteți trimite acum formularul către server
+        document.getElementById("formularAutentificare").submit();
+    }
+
+    function inchidePopup() {
+        var popup = document.getElementById("popup");
+        popup.style.display = "none";
+    }
+
+        adaugaStire("Titlul știrii 1");
+        adaugaStire("Titlul știrii 2");
+    </script>
+</body>
+</html>
